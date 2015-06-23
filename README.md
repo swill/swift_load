@@ -1,6 +1,6 @@
 
-SUMMARY
-=======
+swift_load
+==========
 
 This is a cross platform tool which generates load on an OpenStack Swift environment do do performance testing.  The tool outputs files into a `logs` directory which can then be used by the `object_load` tool to create graphs (contact wstevens@cloudops.com if interested in `object_load`).
 
@@ -8,7 +8,7 @@ The code is not required to use the script.  The executables are already availab
 
 
 USAGE
-=====
+-----
 
 The script can be run on any directory of files, but the default directory is `uploads/small` as per the `object_load` file generation scripts.  If you would like to test with a different directory, simply pass in the `-dir="abs/or/rel/to/dir` parameter.
 
@@ -125,7 +125,7 @@ Load test finished!  Check the 'logs' directory for details...
 
 
 BUILDING FROM SOURCE
-====================
+--------------------
 
 If you want to run from source you would do the following.
 
@@ -138,7 +138,7 @@ $ ./swift_load -h
 
 
 CROSS COMPILING
-===============
+---------------
 
 Using the script from source is not ideal, instead it should be compiled and the executable should be distributed.  Since this is written in Go (golang), it will have to be compiled for each OS independently.  There is an excellent package called `goxc` which enables you to compile for all OS platforms at the same time.
 
