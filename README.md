@@ -130,7 +130,7 @@ BUILDING FROM SOURCE
 If you want to run from source you would do the following.
 
 ``` bash
-$ git clone http://git.cloudops.net/eng/swift_load.git
+$ git clone git@git.cloudops.net:eng/swift_load.git
 $ cd swift_load
 $ go build
 $ ./swift_load -h
