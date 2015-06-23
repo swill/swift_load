@@ -2,7 +2,7 @@
 swift_load
 ==========
 
-This is a cross platform tool which generates load on an OpenStack Swift environment do do performance testing.  The tool outputs files into a `logs` directory which can then be used by the `object_load` tool to create graphs (contact wstevens@cloudops.com if interested in `object_load`).
+This is a cross platform tool which generates load on an OpenStack Swift environment to do performance testing.  The tool outputs files into a `logs` directory which can then be used by the `object_load` tool to create graphs (contact wstevens@cloudops.com if interested in `object_load`).
 
 The code is not required to use the script.  The executables are already available on Cloud.ca Object Storage under `Files > tools > swift_load`.
 
