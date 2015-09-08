@@ -7,6 +7,22 @@ This is a cross platform tool which generates load on an OpenStack Swift environ
 The code is not required to use the script.  The executables are already available on Cloud.ca Object Storage under `Files > tools > swift_load`.
 
 
+SETUP
+-----
+
+Assuming you don't have a Go dev environment, you can use the appropriate binary from the `./bin/snapshot` directory.  I have included below a couple simple commands to extract the contents of the compressed binaries into the root directory of this project (run from the root directory of the project).
+
+**Linux**
+``` bash
+$ tar zxfv ./bin/snapshot/swift_load_linux_amd64.tar.gz -C . --strip-components 1
+```
+
+**Mac**
+``` bash
+$ tar zxfv ./bin/snapshot/swift_load_darwin_amd64.zip -C . --strip-components 1
+```
+
+
 USAGE
 -----
 
