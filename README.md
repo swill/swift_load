@@ -4,43 +4,42 @@ swift_load
 
 This is a cross platform tool which generates load on an OpenStack Swift environment to do performance testing.  The tool outputs files into a `logs` directory which can then be used by the `object_load` tool to create graphs (contact wstevens@cloudops.com if interested in `object_load`).
 
-The code is not required to use the script.  The executables are already available on Cloud.ca Object Storage under `Files > tools > swift_load`.
-
 
 SETUP
 -----
 
-Assuming you don't have a Go dev environment, you can use the appropriate binary from the `./bin/snapshot` directory.  I have included below a couple simple commands to extract the contents of the compressed binaries into the root directory of this project (run from the root directory of the project).
-
-**Linux**
-``` bash
-$ tar zxfv ./bin/snapshot/swift_load_linux_amd64.tar.gz -C . --strip-components 1
-```
-
-**Mac**
-``` bash
-$ tar zxfv ./bin/snapshot/swift_load_darwin_amd64.zip -C . --strip-components 1
-```
-
+The code is not required to use the script.  The executables are available in the `./bin` directory.
 
 USAGE
 -----
 
-The script can be run on any directory of files, but the default directory is `uploads/small` as per the `object_load` file generation scripts.  If you would like to test with a different directory, simply pass in the `-dir="abs/or/rel/to/dir` parameter.
+The script can be run on any directory of files, but the default directory is `uploads/small` as per the [`object_load`](https://github.com/swill/object_load) file generation scripts.  If you would like to test with a different directory, simply pass in the `-dir="abs/or/rel/to/dir` parameter.
 
 The usage documentation for the script is accessible through the `-h` or `-help` flags.
 
 ``` bash
 $ ./swift_load -h
 Usage of ./swift_load:
-  -batch=1: The number of times to run the load test
-  -bucket="global_unique_bucket_name_12345": The bucket that should be used for testing (auto created/deleted)
-  -dir="uploads/small": Absolute or relative path to a directory to be uploaded
-  -endpoint="https://auth-east.cloud.ca/v2.0": The swift object storage public url
-  -identity="": Your swift (auth v2.0) object storage identity
-  -insecure=false: Do not verify the SSL connection endpoint
-  -label="label": 'snake_case' representation of the provider used in the 'object_load' config.py
-  -password="": Your swift (auth v2.0) object storage password
+  -batch int
+      The number of times to run the load test (default 1)
+  -bucket string
+      The bucket that should be used for testing (auto created/deleted) 
+      (default "global_unique_bucket_name_12345")
+  -dir string
+      Absolute or relative path to a directory to be uploaded 
+      (default "uploads/small")
+  -endpoint string
+      The swift object storage public url 
+      (default "https://auth-east.cloud.ca/v2.0")
+  -identity string
+      Your swift (auth v2.0) object storage identity
+  -insecure
+      Do not verify the SSL connection endpoint
+  -label string
+      'snake_case' representation of the provider used in the 'object_load' 
+      config.py (default "label")
+  -password string
+      Your swift (auth v2.0) object storage password
 ```
 
 An example run would look like the following:
@@ -146,7 +145,7 @@ BUILDING FROM SOURCE
 If you want to run from source you would do the following.
 
 ``` bash
-$ git clone http://git.cloudops.net/eng/swift_load.git
+$ git clone https://github.com/swill/swift_load.git
 $ cd swift_load
 $ go build
 $ ./swift_load -h
@@ -156,13 +155,13 @@ $ ./swift_load -h
 CROSS COMPILING
 ---------------
 
-Using the script from source is not ideal, instead it should be compiled and the executable should be distributed.  Since this is written in Go (golang), it will have to be compiled for each OS independently.  There is an excellent package called `goxc` which enables you to compile for all OS platforms at the same time.
+To cross compile this code, you can use `gox`.  I have included a basic builder in `./_build.sh` to get you going.
 
-Learn more about installing `goxc` at: [https://github.com/laher/goxc](https://github.com/laher/goxc)
+Learn more about installing `gox` at: [https://github.com/mitchellh/gox](https://github.com/mitchellh/gox)
 
 Compilation process:
 ``` bash
 $ cd /path/to/swift_load
-$ goxc
+$ ./_build.sh
 ```
 
